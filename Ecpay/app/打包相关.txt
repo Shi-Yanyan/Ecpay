@@ -2,8 +2,8 @@ https://git.oschina.net/tom.cn/Ecpay.git
 
 www.lthack.com
 
-ÇĞ»»»·¾³£ºres-raw-environment_config½«environment ¶ÔÓ¦ ÖµÏàÓ¦µÄ±êÇ©
+åˆ‡æ¢ç¯å¢ƒï¼šres-raw-environment_configå°†environment å¯¹åº” å€¼ç›¸åº”çš„æ ‡ç­¾
 
-Èç¹ûÊÇÕıÊ½ÉÏÏß½«isDevÊôĞÔÖµ¸ÄÎªfalse
+å¦‚æœæ˜¯æ­£å¼ä¸Šçº¿å°†isDevå±æ€§å€¼æ”¹ä¸ºfalse
 
-²âÊÔ½×¶Î·¢°üDEBUG_VERSION ÖµÒÀ´ÎÀÛ¼ÓĞŞ¸Ä
+æµ‹è¯•é˜¶æ®µå‘åŒ…DEBUG_VERSION å€¼ä¾æ¬¡ç´¯åŠ ä¿®æ”¹
