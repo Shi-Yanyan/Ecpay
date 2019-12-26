@@ -7,5 +7,5 @@ import com.onetoall.yjt.domain.ChannelRatio;
  */
 
 public interface IChannelRatioModel {
-    void loadChanneRatio(String store_id, Callback<ChannelRatio> callback);
+    void loadChanneRatio(String store_id,Callback<ChannelRatio> callback);
 }

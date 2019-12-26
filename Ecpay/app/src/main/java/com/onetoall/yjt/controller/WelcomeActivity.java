@@ -31,6 +31,8 @@ import cn.jpush.android.api.JPushInterface;
 public class WelcomeActivity extends AppCompatActivity {
     private static final int LOGIN = 1;//已经登录
     private static final int NO_LOGIN = 2;//未登陆
+
+    private  static  final   int  GO_SPLASH=3;
     private static final int AD = 3;//显示广告
     private Handler mHandler = new Handler() {
         @Override
@@ -43,6 +45,9 @@ public class WelcomeActivity extends AppCompatActivity {
                 case NO_LOGIN:
                     intent = new Intent(WelcomeActivity.this, LoginActivity.class);
                     break;
+                case GO_SPLASH:
+                    intent = new Intent(WelcomeActivity.this,SplashActivity.class);
+                    break;
                 default:
                     break;
             }
@@ -51,6 +56,7 @@ public class WelcomeActivity extends AppCompatActivity {
         }
     };
     private TextView mVersionNameLabel;
+    private boolean isFirst;
 
 
     @Override
@@ -58,6 +64,10 @@ public class WelcomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 //        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
 //                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
+        isFirst = PrefsAccessor.getInstance(this).getBoolean(Constants.ISFIRST);
+
+
         PrefsAccessor.getInstance(MyApplication.getInstance()).saveBoolean(Constants.KEY_PUSH, false);//设备唯一标识未bind server
         AppStateTracker.getInstance().setAppState(AppStateTracker.APP_STATE_OFFLINE);
         setContentView(R.layout.activity_welcome);
@@ -68,6 +78,17 @@ public class WelcomeActivity extends AppCompatActivity {
             mVersionNameLabel.setText("v" + BuildConfig.VERSION_NAME + " " + Environment.getInstance().getEnvironmentName() + MyApplication.DEBUG_VERSION);
         }
         if (PermissionHelper.requestPermission(this, PermissionHelper.Permission.READ_PHONE_STATE, PermissionHelper.ASK_READ_PHONE_STATE)) {
+
+            splash(isFirst);
+
+        }
+    }
+
+    private void splash(boolean isFirst) {
+        if(!isFirst){
+            mHandler.sendEmptyMessageDelayed(GO_SPLASH,2000);
+
+        }else {
             mHandler.sendEmptyMessageDelayed(LOGIN, 2000);
         }
     }
@@ -103,7 +124,9 @@ public class WelcomeActivity extends AppCompatActivity {
             if (grantResults[0] != PackageManager.PERMISSION_GRANTED) {
                 Toast.makeText(this, "获取手机状态权限已被禁止", Toast.LENGTH_SHORT).show();
             }
-            mHandler.sendEmptyMessageDelayed(LOGIN, 1000);
+
+            splash(isFirst);
+//            mHandler.sendEmptyMessageDelayed(LOGIN, 1000);
         }
     }
 }

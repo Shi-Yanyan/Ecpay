@@ -35,7 +35,7 @@ public abstract class EcpayListCallback<T> extends AbstractCallback<T> {
             throw new AppException(AppException.ErrorType.JSON, e.getMessage());
         } catch (JSONException e) {
             throw new AppException(AppException.ErrorType.JSON, e.getMessage());
-        } catch (Exception e) {
+        } catch (Exception e){
             throw new AppException(AppException.ErrorType.JSON, e.getMessage());
         }
     }

@@ -16,17 +16,17 @@ import com.qw.http.RequestManager;
  * Created by shaomengjie on 2016/11/21.
  */
 
-public class PersonnelManagementModel extends BaseModel implements IPersonnelManagementModel {
+public class PersonnelManagementModel extends BaseModel implements IPersonnelManagementModel{
     public PersonnelManagementModel(OnBaseModelListener listener) {
         super(listener);
     }
 
     @Override
     public void loadPersonnelManagement(String tel, String store_number, final Callback<PersonnelManagementBean> callback) {
-        HttpRequest request = new HttpRequest(API.loadPersonnelManagement(), HttpRequest.RequestMethod.POST);
+        HttpRequest request = new HttpRequest(API.loadPersonnelManagement(),HttpRequest.RequestMethod.POST);
         request.addHeader("X-Security-Token", MyApplication.getInstance().getToken());
-        request.put("tel", tel);
-        request.put("store_number", store_number);
+        request.put("tel",tel);
+        request.put("store_number",store_number);
         request.setCallback(new EcpayCallback<PersonnelManagementBean>() {
 
 
@@ -41,6 +41,6 @@ public class PersonnelManagementModel extends BaseModel implements IPersonnelMan
             }
         });
         request.setOnGlobalExceptionListener(this);
-        RequestManager.getInstance().execute("loadPersonnelManagement", request);
+        RequestManager.getInstance().execute("loadPersonnelManagement",request);
     }
 }

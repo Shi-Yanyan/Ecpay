@@ -144,7 +144,7 @@ public abstract class CaptureActivityActivity extends BaseActivity implements Ca
             return;
         } catch (RuntimeException e) {
             e.printStackTrace();
-            if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
+            if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M ) {
                 showRequestCameraPermissionsErrorDialog();
             }
             return;

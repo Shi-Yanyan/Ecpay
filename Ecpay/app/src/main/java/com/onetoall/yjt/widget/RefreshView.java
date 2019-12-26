@@ -17,7 +17,7 @@ import com.onetoall.yjt.R;
  * email: qinwei_it@163.com
  *
  * @author qinwei create by 2015/10/28
- * update time 2016/11/16
+ *         update time 2016/11/16
  */
 public class RefreshView extends FrameLayout implements OnClickListener {
 

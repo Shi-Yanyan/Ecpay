@@ -16,7 +16,6 @@ import com.onetoall.yjt.R;
  * 分别为加载中，加载失败，无数据
  * email: qinwei_it@163.com
  * you can use RefreshView replace this view
- *
  * @author qinwei create by 2015/10/28
  */
 @Deprecated

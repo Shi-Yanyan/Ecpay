@@ -7,5 +7,5 @@ import com.onetoall.yjt.domain.CollectionMoneyBean;
  */
 
 public interface ICollectionMoney {
-    void loadCollectionMoney(String store_id, String rows, Callback<CollectionMoneyBean> callback);
+    void loadCollectionMoney(String store_id,String rows,Callback<CollectionMoneyBean> callback);
 }

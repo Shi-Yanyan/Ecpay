@@ -123,7 +123,7 @@ public class StoreFragment extends BaseFragment implements ITabFragment, OnRowCl
         mContainerView.initializeData(containerDescriptor, this);
         mContainerView.notifyDataChanged();
 
-        loadDataFromServer();
+//        loadDataFromServer();
     }
 
     private void loadDataFromServer() {
@@ -189,12 +189,14 @@ public class StoreFragment extends BaseFragment implements ITabFragment, OnRowCl
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == Constants.PERSON_CHANGE_STORE) {
-            loadDataFromServer();
+//            loadDataFromServer();
         }
     }
 
     @Override
     public void onRefresh() {
-        loadDataFromServer();
+
+
+//        loadDataFromServer();
     }
 }

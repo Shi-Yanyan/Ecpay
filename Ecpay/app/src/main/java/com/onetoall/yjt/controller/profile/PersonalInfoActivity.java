@@ -59,7 +59,7 @@ public class PersonalInfoActivity extends BaseActivity implements OnRowClickList
 
     @Override
     protected void setContentView() {
-        setContentView(R.layout.activity_personal_info_layout, true);
+            setContentView(R.layout.activity_personal_info_layout,true);
     }
 
     @Override
@@ -96,18 +96,18 @@ public class PersonalInfoActivity extends BaseActivity implements OnRowClickList
      * 初始化个人信息
      */
     private void initUserInfo() {
-        mStoreNameLabel.setText("门店:" + MyApplication.getInstance().getStore().getStore_name());
-        mUserNameLabel.setText("姓名:" + MyApplication.getInstance().getUser().getNickname());
+        mStoreNameLabel.setText("门店:"+ MyApplication.getInstance().getStore().getStore_name());
+        mUserNameLabel.setText("姓名:"+MyApplication.getInstance().getUser().getNickname());
         mUserJobNameLabel.setText(MyApplication.getInstance().getStore().getJobName());
-        mPersonalInfoSex.setText("性别:" + ("1".equals(MyApplication.getInstance().getUser().getGender()) ? "男" : "女"));
-        mPersonalInfoAccount.setText("账号:" + MyApplication.getInstance().getUser().getMobile());
-        mPersonalInfoAddTime.setText("添加时间:" + TimeHelper.getDate(Long.parseLong(MyApplication.getInstance().getUser().getCrdate() + "000")));
+        mPersonalInfoSex.setText("性别:"+("1".equals(MyApplication.getInstance().getUser().getGender())?"男":"女"));
+        mPersonalInfoAccount.setText("账号:"+MyApplication.getInstance().getUser().getMobile());
+        mPersonalInfoAddTime.setText("添加时间:"+ TimeHelper.getDate(Long.parseLong(MyApplication.getInstance().getUser().getCrdate()+"000")));
         userModel.selectStoreInfo(MyApplication.getInstance().getStore().getStore_id() + "", new Callback<PersonalInfomationBean>() {
             @Override
             public void onSuccess(PersonalInfomationBean data) {
-                mPersonalInfoArea.setText("所属区域:" + data.getArea());
-                mPersonalInfoAddress.setText("门店地址:" + data.getAddress());
-                mPersonalInfoShop.setText("商户名:" + data.getMerchant_name());
+                mPersonalInfoArea.setText("所属区域:"+data.getArea());
+                mPersonalInfoAddress.setText("门店地址:"+data.getAddress());
+                mPersonalInfoShop.setText("商户名:"+data.getMerchant_name() );
             }
 
             @Override
@@ -117,31 +117,31 @@ public class PersonalInfoActivity extends BaseActivity implements OnRowClickList
         });
     }
 
-    private void initLinstener() {
+    private void initLinstener(){
 
     }
 
     @Override
     public void onRowClick(View rowView, RowActionEnum action) {
-        switch (action) {
+            switch (action){
 
-            case ACTION_CHANGEPWD://修改密码
-                UMEventUtil.onEvent(this, UMEvent.setpersonchangepass);
-                startActivity(new Intent(PersonalInfoActivity.this, PersonPwdChangeActivity.class));
-                break;
-            case ACTION_CHANGEINFO://修改个人信息
-                UMEventUtil.onEvent(this, UMEvent.setpersonchangeinfo);
-                startActivityForResult(new Intent(PersonalInfoActivity.this, PersonInfoChangeActivity.class), Constants.PERSON_CHANGE_USERINFO_CODE);
-                break;
-        }
+                case ACTION_CHANGEPWD://修改密码
+                    UMEventUtil.onEvent(this, UMEvent.setpersonchangepass);
+                    startActivity(new Intent(PersonalInfoActivity.this,PersonPwdChangeActivity.class));
+                    break;
+                case ACTION_CHANGEINFO://修改个人信息
+                    UMEventUtil.onEvent(this, UMEvent.setpersonchangeinfo);
+                    startActivityForResult(new Intent(PersonalInfoActivity.this,PersonInfoChangeActivity.class), Constants.PERSON_CHANGE_USERINFO_CODE);
+                    break;
+            }
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == Constants.PERSON_CHANGE_USERINFO_CODE) {
-            mUserNameLabel.setText("姓名:" + MyApplication.getInstance().getUser().getNickname());
-            mPersonalInfoSex.setText("性别:" + ("1".equals(MyApplication.getInstance().getUser().getGender()) ? "男" : "女"));
+        if (requestCode== Constants.PERSON_CHANGE_USERINFO_CODE){
+            mUserNameLabel.setText("姓名:"+MyApplication.getInstance().getUser().getNickname());
+            mPersonalInfoSex.setText("性别:"+("1".equals(MyApplication.getInstance().getUser().getGender())?"男":"女"));
         }
     }
 }

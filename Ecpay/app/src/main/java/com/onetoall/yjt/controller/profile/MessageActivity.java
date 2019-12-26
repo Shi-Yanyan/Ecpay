@@ -30,11 +30,10 @@ import java.util.ArrayList;
 
 public class MessageActivity extends BaseListActivity<MessageBean> {
     private MessageModel messageModel;
-    private int page = 0;
-
+    private int page = 0 ;
     @Override
     protected void setContentView() {
-        setContentView(R.layout.activity_message, true);
+        setContentView(R.layout.activity_message,true);
     }
 
     @Override
@@ -52,7 +51,7 @@ public class MessageActivity extends BaseListActivity<MessageBean> {
     }
 
     private void loadDataFromServer(final int modePullToStart) {
-        messageModel.loadMessage(page + "", MyApplication.getInstance().getTel(), new Callback<ArrayList<MessageBean>>() {
+        messageModel.loadMessage(page+"", MyApplication.getInstance().getTel(), new Callback<ArrayList<MessageBean>>() {
 
             @Override
             public void onSuccess(ArrayList<MessageBean> data) {
@@ -77,9 +76,9 @@ public class MessageActivity extends BaseListActivity<MessageBean> {
     @Override
     public void onRefresh(int mode) {
         super.onRefresh(mode);
-        if (mode == PullRecyclerView.MODE_PULL_TO_START) {
+        if (mode == PullRecyclerView.MODE_PULL_TO_START){
             page = 0;
-        } else {
+        }else {
             page = 1;
         }
         loadDataFromServer(mode);
@@ -109,21 +108,20 @@ public class MessageActivity extends BaseListActivity<MessageBean> {
             bean = modules.get(i);
             titleTv.setText(bean.getTitle());
             tiemTv.setText(bean.getRelease_time());
-            if (bean.getStatus() == 0) {
+            if(bean.getStatus() == 0){
                 imageView.setImageResource(R.drawable.messagered);
-            } else {
+            }else{
                 imageView.setImageResource(R.drawable.message);
             }
         }
-
         @Override
         public void onClick(View view) {
             imageView.setImageResource(R.drawable.message);
             bean.setStatus(1);
-            Intent intent = new Intent(MessageActivity.this, MessageDetailActivity.class);
-            intent.putExtra("bean", bean);
+            Intent intent=new Intent(MessageActivity.this,MessageDetailActivity.class);
+            intent.putExtra("bean",bean);
             startActivity(intent);
-            messageModel.commitUpdata(bean.getId() + "");
+            messageModel.commitUpdata(bean.getId()+"");
         }
     }
 }

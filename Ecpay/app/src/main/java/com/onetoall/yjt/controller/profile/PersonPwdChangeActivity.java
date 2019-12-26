@@ -8,6 +8,7 @@ import android.widget.EditText;
 import com.onetoall.yjt.MyApplication;
 import com.onetoall.yjt.R;
 import com.onetoall.yjt.core.BaseActivity;
+import com.onetoall.yjt.domain.NewUser;
 import com.onetoall.yjt.domain.Profile;
 import com.onetoall.yjt.domain.Result;
 import com.onetoall.yjt.model.Callback;
@@ -23,7 +24,7 @@ import com.qw.framework.utils.Trace;
  * Created by user on 2016/11/7.
  */
 
-public class PersonPwdChangeActivity extends BaseActivity {
+public class PersonPwdChangeActivity extends BaseActivity{
     private EditText mOldPassword;
     private EditText mNewPassword;
     private EditText mNewPassword2;
@@ -31,7 +32,7 @@ public class PersonPwdChangeActivity extends BaseActivity {
 
     @Override
     protected void setContentView() {
-        setContentView(R.layout.activity_person_pwd, true);
+        setContentView(R.layout.activity_person_pwd,true);
     }
 
     @Override
@@ -44,15 +45,13 @@ public class PersonPwdChangeActivity extends BaseActivity {
     protected void initData(Bundle savedInstanceState) {
         mUserMolde = new UserModel(this);
     }
-
     private void assignViews() {
         mOldPassword = (EditText) findViewById(R.id.old_password);
         mNewPassword = (EditText) findViewById(R.id.new_password);
         mNewPassword2 = (EditText) findViewById(R.id.new_password_2);
     }
-
-    public void click(View view) {
-        UMEventUtil.onEvent(this, UMEvent.setpersonchangepasssave);
+    public void click(View view){
+        UMEventUtil.onEvent(this,UMEvent.setpersonchangepasssave);
         if (verfiPwd()) return;
         showProgress();
         mUserMolde.changePwd(mOldPassword.getText().toString().trim(), mNewPassword.getText().toString().trim(), new Callback<Result>() {
@@ -60,13 +59,13 @@ public class PersonPwdChangeActivity extends BaseActivity {
             public void onSuccess(Result data) {
                 Trace.d(data.toString());
 
-                mUserMolde.login(MyApplication.getInstance().getUser().getUser_name(), mNewPassword.getText().toString(), new Callback<Profile>() {
+                mUserMolde.login(MyApplication.getInstance().getUser().getUser_name(), mNewPassword.getText().toString(), new Callback<NewUser>() {
                     @Override
-                    public void onSuccess(Profile data) {
+                    public void onSuccess(NewUser data) {
                         closeProgress();
                         showToast("密码修改成功!!");
                         PrefsAccessor.getInstance(getApplicationContext()).saveString(Constants.PFA_PWD, mNewPassword.getText().toString());
-                        MyApplication.getInstance().setToken(data.getToken());
+//                        MyApplication.getInstance().setToken(data.getToken());
                         finish();
                     }
 
@@ -81,33 +80,33 @@ public class PersonPwdChangeActivity extends BaseActivity {
 
             @Override
             public void onFailure(int code, String msg) {
-                Trace.d("fail-->" + msg);
+                Trace.d("fail-->"+msg);
             }
         });
     }
 
     private boolean verfiPwd() {
-        if (TextUtils.isEmpty(mOldPassword.getText().toString().trim())) {
+        if (TextUtils.isEmpty(mOldPassword.getText().toString().trim())){
             showToast("请输入原密码");
             return true;
         }
-        if (mOldPassword.getText().toString().trim().length() < 6) {
+        if (mOldPassword.getText().toString().trim().length()<6){
             showToast("原密码长度低于6位");
             return true;
         }
-        if (TextUtils.isEmpty(mNewPassword.getText().toString().trim())) {
+        if (TextUtils.isEmpty(mNewPassword.getText().toString().trim())){
             showToast("请输入新密码");
             return true;
         }
-        if (mNewPassword.getText().toString().trim().length() < 6) {
+        if (mNewPassword.getText().toString().trim().length()<6){
             showToast("新密码长度低于6位");
             return true;
         }
-        if (!mNewPassword.getText().toString().trim().equals(mNewPassword2.getText().toString().trim())) {
+        if (!mNewPassword.getText().toString().trim().equals(mNewPassword2.getText().toString().trim())){
             showToast("两次输入密码不一致");
             return true;
         }
-        if (mOldPassword.getText().toString().trim().equals(mNewPassword.getText().toString().trim())) {
+        if (mOldPassword.getText().toString().trim().equals(mNewPassword.getText().toString().trim())){
             showToast("新密码与原密码相同，请重新输入");
             return true;
         }
@@ -117,6 +116,6 @@ public class PersonPwdChangeActivity extends BaseActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        UMEventUtil.onEvent(this, UMEvent.setpersonchangepassback);
+        UMEventUtil.onEvent(this,UMEvent.setpersonchangepassback);
     }
 }

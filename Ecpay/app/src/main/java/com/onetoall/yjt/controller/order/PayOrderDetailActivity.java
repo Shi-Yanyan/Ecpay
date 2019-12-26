@@ -112,6 +112,6 @@ public class PayOrderDetailActivity extends BaseRefreshActivity implements View.
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        UMEventUtil.onEvent(this, UMEvent.acpaydetailback);
+        UMEventUtil.onEvent(this,UMEvent.acpaydetailback);
     }
 }

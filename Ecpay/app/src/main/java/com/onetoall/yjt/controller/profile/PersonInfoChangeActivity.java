@@ -110,6 +110,6 @@ public class PersonInfoChangeActivity extends BaseActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        UMEventUtil.onEvent(this, UMEvent.setpersonchangeinfoback);
+        UMEventUtil.onEvent(this,UMEvent.setpersonchangeinfoback);
     }
 }

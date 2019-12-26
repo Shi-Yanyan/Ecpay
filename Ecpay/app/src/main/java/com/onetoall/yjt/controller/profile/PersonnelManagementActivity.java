@@ -31,10 +31,9 @@ public class PersonnelManagementActivity extends BaseRefreshActivity {
     private TextView zhiweiTv;
 
     private PersonnelManagementModel personnelManagementModel;
-
     @Override
     protected void setContentView() {
-        setContentView(R.layout.activity_personnel_management, true);
+        setContentView(R.layout.activity_personnel_management,true);
     }
 
     @Override
@@ -60,36 +59,36 @@ public class PersonnelManagementActivity extends BaseRefreshActivity {
                 MyApplication.getInstance().getTel(),
                 MyApplication.getInstance().getStore().getStore_number(),
                 new Callback<PersonnelManagementBean>() {
-                    @Override
-                    public void onSuccess(PersonnelManagementBean data) {
-                        changeRefreshState(RefreshView.State.done);
-                        if (null != data) {
-                            setHead(data);
-                            if (data.getAccount_arr().size() == 0) {
-                                showToast("暂无数据");
-                            } else {
-                                lin.removeAllViews();
-                            }
-                            for (PersonnelManagementBean.AccountArrBean a : data.getAccount_arr()) {
-                                if (a.getSub_account().getStore_id().equals(MyApplication.getInstance().getStore().getStore_number())) {
-                                    setNewItem(a.getSub_account().getNickname(), a.getSub_account().getMobile(), a.getSub_account().getMobile());
-                                }
-                            }
-                        } else {
-                            changeRefreshState(RefreshView.State.ing);
-                            loadDataFromServer();
+            @Override
+            public void onSuccess(PersonnelManagementBean data) {
+                changeRefreshState(RefreshView.State.done);
+                if (null != data) {
+                    setHead(data);
+                    if (data.getAccount_arr().size() == 0) {
+                        showToast("暂无数据");
+                    } else {
+                        lin.removeAllViews();
+                    }
+                    for (PersonnelManagementBean.AccountArrBean a : data.getAccount_arr()) {
+                        if (a.getSub_account().getStore_id().equals(MyApplication.getInstance().getStore().getStore_number())) {
+                            setNewItem(a.getSub_account().getNickname(), a.getSub_account().getMobile(), a.getSub_account().getMobile());
                         }
                     }
+                } else {
+                    changeRefreshState(RefreshView.State.ing);
+                    loadDataFromServer();
+                }
+            }
 
-                    @Override
-                    public void onFailure(int code, String msg) {
-                        changeRefreshState(RefreshView.State.error);
-                    }
-                });
+            @Override
+            public void onFailure(int code, String msg) {
+                changeRefreshState(RefreshView.State.error);
+            }
+        });
     }
 
     private void setHead(PersonnelManagementBean data) {
-        mendianTv.setText("门店: " + MyApplication.getInstance().getStore().getStore_name());
+        mendianTv.setText("门店: " +MyApplication.getInstance().getStore().getStore_name());
         nameTv.setText("姓名: " + data.getUser_info().getNickname());
         zhiweiTv.setText("职位: " + "店长");
     }

@@ -36,8 +36,8 @@ public class MyGridView extends GridView {
     @Override
     protected void onLayout(boolean changed, int l, int t, int r, int b) {
         super.onLayout(changed, l, t, r, b);
-        if (listener != null) {
-            listener.onLayout(getWidth(), getHeight());
+        if(listener!=null){
+            listener.onLayout(getWidth(),getHeight());
         }
     }
 

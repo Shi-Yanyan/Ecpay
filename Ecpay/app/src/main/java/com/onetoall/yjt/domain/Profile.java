@@ -8,7 +8,7 @@ import java.util.List;
  * email:qinwei_it@163.com
  */
 
-public class Profile implements Serializable {
+public class Profile implements Serializable{
     private User user_info;
 
     private List<Store> store_arr;

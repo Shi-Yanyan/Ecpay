@@ -10,6 +10,5 @@ import java.util.ArrayList;
 
 public interface IMessageModel {
     void loadMessage(String id, String username, Callback<ArrayList<MessageBean>> callback);
-
     void commitUpdata(String id);
 }

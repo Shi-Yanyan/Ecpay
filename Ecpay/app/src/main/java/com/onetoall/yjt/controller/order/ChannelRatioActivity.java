@@ -42,19 +42,18 @@ public class ChannelRatioActivity extends BaseRefreshActivity {
     private View xianjin_30;
 
     private LinearLayout background;
-
     @Override
     protected void setContentView() {
-        setContentView(R.layout.activity_channel_ratio, true);
+        setContentView(R.layout.activity_channel_ratio,true);
     }
 
     @Override
     protected void initView() {
         super.initView();
         zhifubao_1 = findViewById(R.id.zhifubao_1);
-        weixin_1 = findViewById(R.id.weixin_1);
+        weixin_1 =  findViewById(R.id.weixin_1);
         yimafu_1 = findViewById(R.id.yimafu_1);
-        xianjin_1 = findViewById(R.id.xianjing_1);
+        xianjin_1 =  findViewById(R.id.xianjing_1);
 
         zhifubao_7 = findViewById(R.id.zhifubao_7);
         weixin_7 = findViewById(R.id.weixin_7);
@@ -79,13 +78,12 @@ public class ChannelRatioActivity extends BaseRefreshActivity {
     }
 
     private void loadDataFromServer() {
-        channelRatioModel.loadChanneRatio(MyApplication.getInstance().getStore().getStore_id() + "", new Callback<ChannelRatio>() {
+        channelRatioModel.loadChanneRatio(MyApplication.getInstance().getStore().getStore_id()+"", new Callback<ChannelRatio>() {
             @Override
             public void onSuccess(ChannelRatio data) {
                 changeRefreshState(RefreshView.State.done);
                 setPayOrderDetail(data);
             }
-
             @Override
             public void onFailure(int code, String msg) {
                 changeRefreshState(RefreshView.State.error);
@@ -103,9 +101,9 @@ public class ChannelRatioActivity extends BaseRefreshActivity {
         bingView(weixin_7, 2, data.getTotal_wx_7(), data.getTotal_wx_pro_7() + "");
         bingView(weixin_30, 2, data.getTotal_wx_30(), data.getTotal_wx_pro_30() + "");
 
-        bingView(xianjin_1, 4, data.getTotal_cash(), data.getTotal_cash_pro() + "");
+        bingView(xianjin_1, 4, data.getTotal_cash(),data.getTotal_cash_pro() + "");
         bingView(xianjin_7, 4, data.getTotal_cash_7(), data.getTotal_cash_pro_7() + "");
-        bingView(xianjin_30, 4, data.getTotal_cash_30(), data.getTotal_cash_pro_30() + "");
+        bingView(xianjin_30, 4, data.getTotal_cash_30(),data.getTotal_cash_pro_30() + "");
         background.setVisibility(View.VISIBLE);
     }
 
@@ -143,7 +141,7 @@ public class ChannelRatioActivity extends BaseRefreshActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        switch (getIntent().getIntExtra(Constants.ACCOUNT_UM_KEY, -1)) {
+        switch (getIntent().getIntExtra(Constants.ACCOUNT_UM_KEY,-1)){
             case Constants.ACCOUNT_UM_VALUE_1:
                 UMEventUtil.onEvent(ChannelRatioActivity.this, UMEvent.actotaltodayback);
                 break;

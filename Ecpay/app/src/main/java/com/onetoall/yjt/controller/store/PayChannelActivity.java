@@ -101,6 +101,6 @@ public class PayChannelActivity extends BaseActivity implements OnRowClickListen
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        UMEventUtil.onEvent(this, UMEvent.shoppaytypeback);
+        UMEventUtil.onEvent(this,UMEvent.shoppaytypeback);
     }
 }

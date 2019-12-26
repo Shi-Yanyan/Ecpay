@@ -60,9 +60,9 @@ public class QRCodeManagerActivity extends BaseListActivity<QRCodeInfo> implemen
         mPullRecyclerView.setEnablePullToEnd(false);
         mQrCodeModel = new QRCodeModel(this);
         loadDataFromServer(PullRecyclerView.MODE_PULL_TO_START);
-        if (MyApplication.getInstance().getStore().isShopkeeper()) {
+        if(MyApplication.getInstance().getStore().isShopkeeper()){
             findViewById(R.id.mQRCodeManagerAddBtn).setVisibility(View.VISIBLE);
-        } else {
+        }else{
             findViewById(R.id.mQRCodeManagerAddBtn).setVisibility(View.GONE);
         }
     }

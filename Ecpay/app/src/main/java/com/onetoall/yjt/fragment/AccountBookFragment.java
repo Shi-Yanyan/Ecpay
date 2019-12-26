@@ -106,7 +106,7 @@ public class AccountBookFragment extends BaseListFragment<PayOrder> implements I
         if (mode == PullRecyclerView.MODE_PULL_TO_START) {
             timestamp = 0;
         } else {
-            if (TextUtil.isValidate(modules)) {
+            if(TextUtil.isValidate(modules)){
                 timestamp = modules.get(modules.size() - 1).getData_long();
             }
         }
@@ -131,7 +131,7 @@ public class AccountBookFragment extends BaseListFragment<PayOrder> implements I
     }
 
     class Holder extends BaseViewHolder implements View.OnClickListener {
-        private View mLine;
+        private  View mLine;
         private TextView mGroupTitleLabel;
         private TextView mAccountBookItemAmountLabel;
         private ImageView mAccountBookItemIconImg;
@@ -142,7 +142,7 @@ public class AccountBookFragment extends BaseListFragment<PayOrder> implements I
 
         public Holder(View v) {
             super(v);
-            mLine = v.findViewById(R.id.mLine);
+            mLine=v.findViewById(R.id.mLine);
             mAccountBookItemIconImg = (ImageView) v.findViewById(R.id.mAccountBookItemIconImg);
             mAccountBookItemStateLabel = (TextView) v.findViewById(R.id.mAccountBookItemStateLabel);
             mAccountBookItemCreateTimeLabel = (TextView) v.findViewById(R.id.mAccountBookItemCreateTimeLabel);
@@ -184,7 +184,7 @@ public class AccountBookFragment extends BaseListFragment<PayOrder> implements I
 
             if (i == 0 || modules.get(i - 1).getDate_int() != module.getDate_int()) {
                 mGroupTitleLabel.setVisibility(View.VISIBLE);
-                mGroupTitleLabel.setText(TimeHelper.updateMilliSecToFormatDateStr(module.getData_long(), "yyyy-MM-dd"));
+                mGroupTitleLabel.setText(TimeHelper.updateMilliSecToFormatDateStr(module.getData_long(),"yyyy-MM-dd"));
             } else {
                 mLine.setVisibility(View.GONE);
                 mGroupTitleLabel.setVisibility(View.GONE);
@@ -200,7 +200,7 @@ public class AccountBookFragment extends BaseListFragment<PayOrder> implements I
 
         @Override
         public void onClick(View v) {
-            UMEventUtil.onEvent(getActivity(), UMEvent.acpaydetail);
+            UMEventUtil.onEvent(getActivity(),UMEvent.acpaydetail);
             Intent intent = new Intent(getActivity(), PayOrderDetailActivity.class);
             intent.putExtra(Constants.ARG_PAY_ORDER_ID, module.getId() + "");
             startActivity(intent);
@@ -256,11 +256,11 @@ public class AccountBookFragment extends BaseListFragment<PayOrder> implements I
                 break;
             default:
                 textView7.setText(f.replace("-", "") + "%");
-                if (f != null && f.indexOf("-") > -1) {
+                if(f!=null&&f.indexOf("-")>-1){
                     textView7.setTextColor(Color.GREEN);
                     image7.setImageResource(R.drawable.ic_account_book_state_down);
                     image7.setVisibility(View.VISIBLE);
-                } else {
+                }else{
                     textView7.setTextColor(getResources().getColor(R.color.red));
                     image7.setImageResource(R.drawable.ic_account_book_state_up);
                     image7.setVisibility(View.VISIBLE);
@@ -275,12 +275,12 @@ public class AccountBookFragment extends BaseListFragment<PayOrder> implements I
                 textView10.setTextColor(getResources().getColor(R.color.red));
                 break;
             default:
-                if (c != null && c.indexOf("-") > -1) {
+                if(c!=null&&c.indexOf("-")>-1){
                     textView10.setText(c.replace("-", "") + "%");
                     image10.setImageResource(R.drawable.ic_account_book_state_down);
                     image10.setVisibility(View.VISIBLE);
                     textView10.setTextColor(Color.GREEN);
-                } else {
+                }else{
                     textView10.setText(c.replace("-", "") + "%");
                     textView10.setTextColor(getResources().getColor(R.color.red));
                     image10.setVisibility(View.VISIBLE);
@@ -293,17 +293,17 @@ public class AccountBookFragment extends BaseListFragment<PayOrder> implements I
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(view.getContext(), ChannelRatioActivity.class);
-                if ("今日销售额".equals(jinri.getText().toString())) {
+                if ("今日销售额".equals(jinri.getText().toString())){
                     UMEventUtil.onEvent(AccountBookFragment.this.getActivity(), UMEvent.actotaltoday);
-                    intent.putExtra(Constants.ACCOUNT_UM_KEY, Constants.ACCOUNT_UM_VALUE_1);
+                    intent.putExtra(Constants.ACCOUNT_UM_KEY,Constants.ACCOUNT_UM_VALUE_1);
                 }
-                if ("7天销售额".equals(jinri.getText().toString())) {
+                if ("7天销售额".equals(jinri.getText().toString())){
                     UMEventUtil.onEvent(AccountBookFragment.this.getActivity(), UMEvent.actotal7day);
-                    intent.putExtra(Constants.ACCOUNT_UM_KEY, Constants.ACCOUNT_UM_VALUE_7);
+                    intent.putExtra(Constants.ACCOUNT_UM_KEY,Constants.ACCOUNT_UM_VALUE_7);
                 }
-                if ("30天销售额".equals(jinri.getText().toString())) {
+                if ("30天销售额".equals(jinri.getText().toString())){
                     UMEventUtil.onEvent(AccountBookFragment.this.getActivity(), UMEvent.actotal30day);
-                    intent.putExtra(Constants.ACCOUNT_UM_KEY, Constants.ACCOUNT_UM_VALUE_30);
+                    intent.putExtra(Constants.ACCOUNT_UM_KEY,Constants.ACCOUNT_UM_VALUE_30);
                 }
                 startActivity(intent);
 
@@ -316,17 +316,16 @@ public class AccountBookFragment extends BaseListFragment<PayOrder> implements I
 
     }
 
-    private long refreshTimestamp = 0;
-
+    private long refreshTimestamp=0;
     @Override
     public void onHiddenChanged(boolean hidden) {
         super.onHiddenChanged(hidden);
         if (!hidden) {
-            if (System.currentTimeMillis() - refreshTimestamp > 5000) {
+            if(System.currentTimeMillis()-refreshTimestamp>5000){
                 timestamp = 0;
                 loadDataFromServer(PullRecyclerView.MODE_PULL_TO_START);
             }
-            refreshTimestamp = System.currentTimeMillis();
+            refreshTimestamp=System.currentTimeMillis();
         }
     }
 }

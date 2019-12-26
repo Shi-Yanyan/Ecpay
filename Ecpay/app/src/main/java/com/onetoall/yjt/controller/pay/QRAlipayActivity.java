@@ -58,7 +58,7 @@ public class QRAlipayActivity extends CaptureActivityActivity implements TabLayo
         mTabLayoutV2 = (TabLayout) findViewById(R.id.mTabLayoutV2);
         ArrayList<TabView.Tab> tabs = new ArrayList<>();
         tabs.add(new TabView.Tab(R.drawable.select_qr_scan, R.string.qr_scanner, R.color.selector_tab_label, null));
-        tabs.add(new TabView.Tab(R.drawable.select_qr_code, R.string.qr_code, R.color.selector_tab_label, null));
+        tabs.add(new TabView.Tab(R.drawable.select_qr_code, R.string.qr_code, R.color.selector_tab_label,null));
         mTabLayoutV2.initData(tabs, this);
         mTabLayoutV2.setCurrentTab(0);
         findViewById(R.id.mQrAlipayGuideLabel).setOnClickListener(new View.OnClickListener() {
@@ -66,8 +66,8 @@ public class QRAlipayActivity extends CaptureActivityActivity implements TabLayo
             public void onClick(View v) {
                 if (currentIndex == 0) {
                     dialogIsShowing = true;
-                    if (handler != null)
-                        handler.stopScannerQRCode();//停止识别二维码
+                    if(handler!=null)
+                    handler.stopScannerQRCode();//停止识别二维码
                     showQRScannerGuideDialog();
                 } else {
                     showQRCodeGuideDialog();
@@ -81,7 +81,7 @@ public class QRAlipayActivity extends CaptureActivityActivity implements TabLayo
     protected void initData(Bundle savedInstanceState) {
         setTitle(R.string.app_home_collect_money_label);
         price = getIntent().getStringExtra(Constants.ARG_PAY_PRICE);
-        mQrAlipayPriceLabel.setText("￥" + price);
+        mQrAlipayPriceLabel.setText("￥"+price);
         mPayModel = new PayModel(this);
 
         parameter = new PayRequestParameter();
@@ -91,7 +91,7 @@ public class QRAlipayActivity extends CaptureActivityActivity implements TabLayo
         parameter.store_id = MyApplication.getInstance().getStore().getStore_id() + "";
         parameter.trans_account = PayRequestParameter.TRANS_ACCOUNT_TYPE_ALIPAY;
 //        parameter.type   类型目前又qrCode决定 具体逻辑PayModel中查看
-        parameter.type = PayOrder.ALIPAY + "";
+        parameter.type= PayOrder.ALIPAY+"";
         parameter.username = MyApplication.getInstance().getUser().getUser_name();
     }
 
@@ -155,13 +155,13 @@ public class QRAlipayActivity extends CaptureActivityActivity implements TabLayo
                 dialogIsShowing = false;
             }
         });
-        UMEventUtil.onEvent(this, UMEvent.alipaysaofun);
+        UMEventUtil.onEvent(this,UMEvent.alipaysaofun);
         dialog.show();
     }
 
     public void showQRCodeGuideDialog() {
         AlipayQRCodeGuideDialog dialog = new AlipayQRCodeGuideDialog(this);
-        UMEventUtil.onEvent(this, UMEvent.alipayscodefun);
+        UMEventUtil.onEvent(this,UMEvent.alipayscodefun);
         dialog.show();
     }
 
@@ -178,8 +178,8 @@ public class QRAlipayActivity extends CaptureActivityActivity implements TabLayo
                 }
                 if (!CameraManager.get().isPreviewing() && this.currentIndex != -1) {
                     CameraManager.get().startPreview();
-                    if (handler != null)
-                        handler.startScannerQRCode();
+                    if(handler!=null)
+                    handler.startScannerQRCode();
                 }
                 mQrAlipayPriceLabel.setVisibility(View.VISIBLE);
                 break;
@@ -191,8 +191,8 @@ public class QRAlipayActivity extends CaptureActivityActivity implements TabLayo
                 Fragment fragment = AlipayQRCodeFragment.getInstance(parameter);
                 getSupportFragmentManager().beginTransaction().add(R.id.mQrCodeContainer, fragment, "qrCode").commit();
                 CameraManager.get().stopPreview();
-                if (handler != null)
-                    handler.stop();
+                if(handler!=null)
+                handler.stop();
                 break;
             default:
                 break;
@@ -213,9 +213,9 @@ public class QRAlipayActivity extends CaptureActivityActivity implements TabLayo
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        if (currentIndex == 0) {
+        if(currentIndex==0){
             UMEventUtil.onEvent(this, UMEvent.alipaysaoback);
-        } else {
+        }else{
             UMEventUtil.onEvent(this, UMEvent.alipayscodeback);
         }
     }

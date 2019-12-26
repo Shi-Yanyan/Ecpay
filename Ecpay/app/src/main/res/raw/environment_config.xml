@@ -3,9 +3,9 @@
     <Environment>PRD</Environment>
     <!-- 服务地址 -->
     <ServerURL>
-        <DEV>http://notice.ocheng.me</DEV>
-        <PRE>http://beta.ecpay.1toall.net</PRE>
-        <PRD>http://ecpay.1toall.net</PRD>
+        <DEV>http://47.96.176.43:8080</DEV>
+        <PRE>http://47.96.176.43:8080</PRE>
+        <PRD>http://47.96.176.43:8080</PRD>
     </ServerURL>
     <!-- 加密服务地址 -->
     <SecurityURL>

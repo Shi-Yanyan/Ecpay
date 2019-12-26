@@ -7,7 +7,7 @@ import java.io.Serializable;
  * email:qinwei_it@163.com
  */
 
-public class PushMessage implements Serializable {
+public class PushMessage implements Serializable{
     private String title;
 
     private String content;
@@ -18,43 +18,34 @@ public class PushMessage implements Serializable {
 
     private String orderStatus;
 
-    public void setContent(String content) {
+    public void setContent(String content){
         this.content = content;
     }
-
-    public String getContent() {
+    public String getContent(){
         return this.content;
     }
-
-    public void setTitle(String title) {
+    public void setTitle(String title){
         this.title = title;
     }
-
-    public String getTitle() {
+    public String getTitle(){
         return this.title;
     }
-
-    public void setFrom(String from) {
+    public void setFrom(String from){
         this.from = from;
     }
-
-    public String getFrom() {
+    public String getFrom(){
         return this.from;
     }
-
-    public void setOrderStatus(String orderStatus) {
+    public void setOrderStatus(String orderStatus){
         this.orderStatus = orderStatus;
     }
-
-    public String getOrderStatus() {
+    public String getOrderStatus(){
         return this.orderStatus;
     }
-
-    public void setNote(String note) {
+    public void setNote(String note){
         this.note = note;
     }
-
-    public String getNote() {
+    public String getNote(){
         return this.note;
     }
 

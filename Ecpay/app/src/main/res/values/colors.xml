@@ -36,12 +36,12 @@
     <color name="defaul_line">#cccccc</color>
     <color name="collect_tips_text_color">#a8a8a8</color>
     <color name="deep_gray_text">#A7A7A7</color>
-    <color name="BaseBlueColor">#069cff</color>
+    <color name="BaseBlueColor">#BA6876</color>
     <color name="pay_cash_gray_bg">#fafafa</color>
     <color name="pay_cash_gary_text">#a8a8a8</color>
 
 
-    <color name="back">#fafafa</color>
+    <color name="back">#FAFAFA</color>
     <color name="back_2">#f1f1f1</color>
     <color name="back_3">#dcdcdc</color>
 

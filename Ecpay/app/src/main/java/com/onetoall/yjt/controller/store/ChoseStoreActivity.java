@@ -20,8 +20,8 @@ import com.qw.framework.widget.pull.PullRecyclerView;
 
 /**
  * Created by user on 2016/11/18.
- * setTitle("选择门店");
- * setContentView(R.layout.activity_chose_store,true);
+ *   setTitle("选择门店");
+ *     setContentView(R.layout.activity_chose_store,true);
  */
 
 public class ChoseStoreActivity extends BaseListActivity<AllInfoNewBean.StoreArrBean> {
@@ -31,7 +31,7 @@ public class ChoseStoreActivity extends BaseListActivity<AllInfoNewBean.StoreArr
     @Override
     protected void setContentView() {
         super.setContentView();
-        setContentView(R.layout.activity_chose_store, true);
+        setContentView(R.layout.activity_chose_store,true);
     }
 
     @Override
@@ -51,12 +51,11 @@ public class ChoseStoreActivity extends BaseListActivity<AllInfoNewBean.StoreArr
         mUserModel = new UserModel(this);
         loadDataFromServer(PullRecyclerView.MODE_PULL_TO_START);
     }
-
-    private void loadDataFromServer(final int mode) {
+    private void loadDataFromServer(final int mode){
         mUserModel.querryAllInfoNew(MyApplication.getInstance().getTel(), new Callback<AllInfoNewBean>() {
             @Override
             public void onSuccess(AllInfoNewBean data) {
-                if (mode == PullRecyclerView.MODE_PULL_TO_START) {
+                if (mode==PullRecyclerView.MODE_PULL_TO_START){
                     modules.clear();
 
                 }
@@ -73,27 +72,27 @@ public class ChoseStoreActivity extends BaseListActivity<AllInfoNewBean.StoreArr
     }
 
 
-    class MyViewHolder extends BaseViewHolder implements View.OnClickListener {
+    class MyViewHolder extends BaseViewHolder implements View.OnClickListener{
 
-        private TextView mStoreName;
-        private TextView mStoreN0;
-        private RelativeLayout choseStoreBtn;
+        private  TextView mStoreName;
+        private  TextView mStoreN0;
+        private  RelativeLayout choseStoreBtn;
         private AllInfoNewBean.StoreArrBean storeArrBean;
 
 
         public MyViewHolder(View itemView) {
             super(itemView);
-            mStoreName = (TextView) itemView.findViewById(R.id.pay_tv);
-            mStoreN0 = (TextView) itemView.findViewById(R.id.pay_people);
-            choseStoreBtn = (RelativeLayout) itemView.findViewById(R.id.ali_pay_btn);
+             mStoreName = (TextView) itemView.findViewById(R.id.pay_tv);
+             mStoreN0 = (TextView) itemView.findViewById(R.id.pay_people);
+             choseStoreBtn = (RelativeLayout) itemView.findViewById(R.id.ali_pay_btn);
             choseStoreBtn.setOnClickListener(this);
         }
 
         @Override
         public void bindData(int i) {
             storeArrBean = modules.get(i);
-            mStoreN0.setText("门店编号：" + storeArrBean.getStore_number());
-            mStoreName.setText("门店名：" + storeArrBean.getStore_name());
+            mStoreN0.setText("门店编号："+storeArrBean.getStore_number());
+            mStoreName.setText("门店名："+storeArrBean.getStore_name());
         }
 
         @Override

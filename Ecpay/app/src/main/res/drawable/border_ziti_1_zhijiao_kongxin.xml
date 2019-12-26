@@ -5,6 +5,6 @@
         android:width="1px"
         android:color="@color/ziti_1"
         android:dashWidth="0dp" />
-    <solid android:color="@android:color/white" />
+    <solid android:color="@android:color/white"/>
 </shape>
 

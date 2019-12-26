@@ -22,7 +22,6 @@ public interface IQRCodeModel {
 
     /**
      * 绑定什码付
-     *
      * @param store_id
      * @param qrcode_id
      * @param callBack

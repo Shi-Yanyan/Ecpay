@@ -8,6 +8,7 @@ import com.onetoall.yjt.domain.ApkBean;
 
 public interface IUpdateModel {
     /**
+     *
      * @param callback
      */
     void loadApkInfo(String versonCode, Callback<ApkBean> callback);

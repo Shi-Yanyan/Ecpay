@@ -72,11 +72,10 @@ public class MoneyCollectFragment extends BaseFragment implements ITabFragment {
 
         @Override
         protected void receiverMessage(PushMessage pushMessage) {
-            Trace.e("push message：" + pushMessage.toString());
+            Trace.e("push message："+pushMessage.toString());
             mNotifyMessageTipsImg.setVisibility(View.VISIBLE);
         }
     };
-
     @Override
     protected int getFragmentLayoutId() {
         return R.layout.fragment_collect_money;
@@ -118,7 +117,7 @@ public class MoneyCollectFragment extends BaseFragment implements ITabFragment {
     public void onResume() {
         super.onResume();
         PushManager.getInstance().addObserver(watcher);
-        loadDataFromServer();
+//        loadDataFromServer();
     }
 
     @Override

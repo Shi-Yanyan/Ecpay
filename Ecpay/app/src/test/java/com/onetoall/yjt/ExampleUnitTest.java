@@ -12,7 +12,7 @@ import static org.junit.Assert.*;
 public class ExampleUnitTest {
     @Test
     public void addition_isCorrect() throws Exception {
-        assertEquals("android_version_new", getID("api/version/android_version_new"));
+        assertEquals("android_version_new",getID("api/version/android_version_new"));
     }
 
     private boolean isReallyMoney(String money) {
@@ -20,7 +20,7 @@ public class ExampleUnitTest {
         return money.matches("^(([1-9]\\d{0,5})|0)(\\.\\d{0,2})?$");
     }
 
-    String getID(String url) {
+    String getID(String url){
         int index = url.lastIndexOf("/");
 
         String after = url.substring(index + 1);

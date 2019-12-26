@@ -20,11 +20,11 @@ public abstract class PushWatcher implements Observer {
         if (data != null && data instanceof String) {
             String msg = (String) data;
             try {
-                JSONObject jsonObject = new JSONObject(msg);
-                String orderStatus = jsonObject.getString("orderStatus");
-                if (orderStatus.equals("10")) {
+                JSONObject jsonObject=new JSONObject(msg);
+                String orderStatus=jsonObject.getString("orderStatus");
+                if(orderStatus.equals("10")){
                     receiverMessage(JsonParser.deserializeFromJson(msg, PushMessage.class));
-                } else {
+                }else{
                     PayOrderDetail payOrderDetail = JsonParser.deserializeFromJson(msg, PayOrderDetail.class);
                     goPayResultActivity(payOrderDetail);
                 }
@@ -35,13 +35,7 @@ public abstract class PushWatcher implements Observer {
         }
     }
 
-    protected void receiverMessage(PushMessage pushMessage) {
-    }
+    protected  void receiverMessage(PushMessage pushMessage){};
 
-    ;
-
-    protected void goPayResultActivity(PayOrderDetail payOrderDetail) {
-    }
-
-    ;
+    protected  void goPayResultActivity(PayOrderDetail payOrderDetail){};
 }

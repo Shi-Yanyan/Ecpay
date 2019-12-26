@@ -49,12 +49,12 @@ public class PushManager {
     }
 
 
-    public void setPushAlias(Context context, final String androidID) {
-        JPushInterface.setAlias(context, androidID + "", new TagAliasCallback() {
+    public void setPushAlias(Context context, final String androidID){
+        JPushInterface.setAlias(context, androidID+"", new TagAliasCallback() {
             @Override
             public void gotResult(int code, String s, Set<String> set) {
-                Trace.e("setAlias result msg:" + code + "  " + s + ", set:");
-                String logs = "";
+                Trace.e("setAlias result msg:"+code+"  "+s+", set:");
+                String logs="";
                 switch (code) {
                     case 0:
                         logs = "Set tag and alias success";
@@ -72,25 +72,24 @@ public class PushManager {
             }
         });
     }
-
-    private void bindPushID(String androidID) {
-        HttpRequest request = new HttpRequest(API.loadPushId(), HttpRequest.RequestMethod.POST);
-        request.put("store_id", MyApplication.getInstance().getStore().getStore_id() + "");
-        request.put("token", androidID);
-        request.put("tel", MyApplication.getInstance().getTel());
-        request.addHeader("X-Security-Token", MyApplication.getInstance().getToken());
-        request.setCallback(new EcpayResultCallBack<Result>() {
-            @Override
-            public void onSuccess(Result s) {
-                Trace.e("bind push id result msg:" + s.toString());
-                PrefsAccessor.getInstance(MyApplication.getInstance()).saveBoolean(Constants.KEY_PUSH, true);
-            }
-
-            @Override
-            public void onFailure(AppException e) {
-                e.printStackTrace();
-            }
-        });
-        RequestManager.getInstance().execute("", request);
+    private void bindPushID(String androidID){
+//        HttpRequest request=new HttpRequest(API.loadPushId(), HttpRequest.RequestMethod.POST);
+//        request.put("store_id", MyApplication.getInstance().getStore().getStore_id() + "");
+//        request.put("token", androidID);
+//        request.put("tel", MyApplication.getInstance().getTel());
+//        request.addHeader("X-Security-Token", MyApplication.getInstance().getToken());
+//        request.setCallback(new EcpayResultCallBack<Result>() {
+//            @Override
+//            public void onSuccess(Result s) {
+//                Trace.e("bind push id result msg:"+s.toString());
+//                PrefsAccessor.getInstance(MyApplication.getInstance()).saveBoolean(Constants.KEY_PUSH,true);
+//            }
+//
+//            @Override
+//            public void onFailure(AppException e) {
+//                e.printStackTrace();
+//            }
+//        });
+//        RequestManager.getInstance().execute("",request);
     }
 }

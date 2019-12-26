@@ -11,13 +11,12 @@ public class API {
     public static String domain;
     //我的测试
     public static String ceshi;
-
     public static void setDomain(String domain) {
         API.domain = domain;
     }
-
     public static final String BIND_PUSH_ID = "/api/appAccount/uploadOneToken";
-    public static final String LOGIN = "/api/appAccount/loginYjt";//登录
+    public static final String LOGIN = "/flowerdata/Login";//登录
+    public static  final String REGISIT="/flowerdata/Regist";
     public static final String FIND_USER_INFO = "/api/appAccount/queryUserInfo";//查询用户详情
     public static final String FIND_STORE_INFO = "/api/store/findStoreInfo";//查找门店信息
 
@@ -35,7 +34,7 @@ public class API {
     public static final String FIND_QR_CODE_LIST = "/api/xlPay/ymf_manager_xl";//查询一码付列表
     public static final String CHANGE_PWD = "/api/appAccount/updatePw";//修改密码
     public static final String SELECT_MERSTOREINFO = "/api/store/select_merStoreInfo";//查询商户信息
-    public static final String CHANGEUSERINFO = "/api/appAccount/changeUserInfo";//修改个人信息
+    public static final String  CHANGEUSERINFO = "/api/appAccount/changeUserInfo";//修改个人信息
     public static final String QUERY_ALL_INFONEW = "/api/appAccount/queryAllInfoNew";//实时查询用户信息
 
 
@@ -49,13 +48,15 @@ public class API {
 
     public static final String PERSONNEL_MANAGEMENT = "/api/appAccount/queryAllInfoNew";//人员管理
     public static final String ANDROID_VERSION_NEW = "/api/version/android_version_new";//人员管理
-    public static final String COMMIT_UPDATA = "/api/notice/updatestatus";//修改消息
+    public static final String COMMIT_UPDATA ="/api/notice/updatestatus";//修改消息
     public static final String MESSAGE_LIST = "/api/notice/select_notice";//消息列表
 
-    private static final String SELECT_MESSAGE_READ_STATUS = "/api/notice/select_noread_message";
-
-    public static String loadLogin() {
-        return domain + LOGIN;
+    private static final String SELECT_MESSAGE_READ_STATUS ="/api/notice/select_noread_message" ;
+    public static String loadLogin(String username ,String password) {
+        return domain + LOGIN+"?username="+username+"&password="+password;
+    }
+    public static String loadRegisit(String username ,String password,String nicname) {
+        return domain + REGISIT+"?username="+username+"&password="+password+"&name="+nicname;
     }
 
     public static String loadAccountBookIndex() {
@@ -79,27 +80,23 @@ public class API {
         return domain + FIND_QR_CODE_LIST;
     }
 
-    public static String loadCollectionMoney() {
+    public static String loadCollectionMoney(){
         return domain + COLLECTION_MONEY;
     }
 
     /**
      * 修改消息
-     *
      * @return
      */
-    public static String commitUpdata() {
-        return domain + COMMIT_UPDATA;
-    }
-
-    ;
+    public static String commitUpdata(){
+        return domain +COMMIT_UPDATA;
+    };
 
     /**
      * 获取人员管理
-     *
      * @return
      */
-    public static String loadPersonnelManagement() {
+    public static String loadPersonnelManagement(){
         return domain + PERSONNEL_MANAGEMENT;
     }
 
@@ -194,7 +191,6 @@ public class API {
     public static String sendVerfiMsg() {
         return domain + SEND_VERFI_MSG;
     }
-
     /**
      * 实时查询用户信息
      */
@@ -205,24 +201,19 @@ public class API {
     public static String loadPushId() {
         return domain + BIND_PUSH_ID;
     }
-
     /**
      * 查询版本信息
      */
     public static String updataApk() {
         return domain + ANDROID_VERSION_NEW;
     }
-
-    public static String getMessageList() {
-        return domain + MESSAGE_LIST;
-    }
+    public static String getMessageList() {return domain + MESSAGE_LIST;}
 
     /**
      * 是否有已读消息
-     *
      * @return
      */
     public static String loadMessageReadStatus() {
-        return domain + SELECT_MESSAGE_READ_STATUS;
+        return domain+SELECT_MESSAGE_READ_STATUS;
     }
 }

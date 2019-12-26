@@ -29,7 +29,7 @@ public class PayCashModel extends BaseModel implements IPayModel {
         HttpRequest request = new HttpRequest(API.putCashPay(), HttpRequest.RequestMethod.POST);
         request.addHeader("X-Security-Token", MyApplication.getInstance().getToken());
         request.putEncoded("total_fee", parameter.price + "");
-        request.putEncoded("payment_type", "4");
+            request.putEncoded("payment_type", "4");
         request.putEncoded("cashier", parameter.username);
         request.putEncoded("trans_account", parameter.trans_account + "");
         request.putEncoded("cashier_id", parameter.mobile);

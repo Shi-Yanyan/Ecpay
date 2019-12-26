@@ -30,7 +30,6 @@ public class AlipayQRCodeFragment extends BaseFragment implements ITabFragment {
     private TextView mQRCodePriceLabel;
     private PayRequestParameter parameter;
     private PayModel mPayModel;
-
     public static Fragment getInstance(PayRequestParameter parameter) {
         AlipayQRCodeFragment fragment = new AlipayQRCodeFragment();
         Bundle args = new Bundle();
@@ -59,7 +58,7 @@ public class AlipayQRCodeFragment extends BaseFragment implements ITabFragment {
     @Override
     protected void initData() {
         super.initData();
-        mPayModel = new PayModel((OnBaseModelListener) getActivity());
+        mPayModel=new PayModel((OnBaseModelListener) getActivity());
         mQRCodePriceLabel.setText("￥ " + parameter.price);
         loadDataFromServer();
     }

@@ -83,7 +83,7 @@ public class QToolbar extends Toolbar {
         mToolbarRightLabel.setText(text);
         if (!TextUtils.isEmpty(text)) {
             mToolbarRightLabel.setVisibility(View.VISIBLE);
-        } else {
+        }else {
             mToolbarRightLabel.setVisibility(View.GONE);
         }
     }

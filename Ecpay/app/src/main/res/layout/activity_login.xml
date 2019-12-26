@@ -54,6 +54,21 @@
         android:textColorHint="@color/white"
         android:textSize="@dimen/text_size_14" />
 
+
+    <EditText
+        android:id="@+id/mLoginNicNameEdt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/common_activity_padding_16"
+        android:layout_marginRight="@dimen/common_activity_padding_16"
+        android:layout_marginTop="@dimen/common_activity_padding_8"
+        android:background="@drawable/denglu_white"
+        android:hint="@string/mLoginNicNameHint"
+        android:lines="1"
+        android:padding="@dimen/common_activity_padding_8"
+        android:textColorHint="@color/white"
+        android:textSize="@dimen/text_size_14" />
+
     <TextView
         android:id="@+id/mForgetPwdLabel"
         android:layout_width="wrap_content"
@@ -72,6 +87,15 @@
         android:layout_marginRight="@dimen/common_activity_padding_16"
         android:layout_marginTop="32dp"
         android:text="@string/mLoginLabel" />
+    <Button
+        android:id="@+id/mRegistCommitBtn"
+        style="@style/mBlueBtnStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/common_activity_padding_16"
+        android:layout_marginRight="@dimen/common_activity_padding_16"
+        android:layout_marginTop="32dp"
+        android:text="@string/mRedisitLabel" />
 
 
     <Button

@@ -7,7 +7,8 @@
     <RelativeLayout
         android:id="@+id/btn"
         android:layout_width="match_parent"
-        android:layout_height="64dp">
+        android:layout_height="64dp"
+        >
 
         <ImageView
             android:id="@+id/pay_img"
@@ -28,8 +29,8 @@
             android:layout_marginRight="5dp"
             android:layout_toLeftOf="@+id/ll"
             android:layout_toStartOf="@+id/ll"
-            android:visibility="gone" />
-
+            android:visibility="gone"
+             />
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -39,8 +40,8 @@
             android:id="@+id/ll"
             android:layout_toRightOf="@+id/pay_img"
             android:layout_toEndOf="@+id/pay_img"
-            android:layout_alignBottom="@+id/pay_img">
-
+            android:layout_alignBottom="@+id/pay_img"
+            >
             <TextView
                 android:id="@+id/title"
                 android:layout_width="wrap_content"
@@ -66,6 +67,7 @@
                 android:textColor="@color/ziti_1"
                 android:textSize="12sp" />
         </RelativeLayout>
+
 
 
         <ImageView

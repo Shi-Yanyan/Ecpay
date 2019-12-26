@@ -8,7 +8,7 @@ import java.io.Serializable;
  */
 
 public class Store implements Serializable {
-    private long store_id;
+    private long  store_id;
     private String area;
 
     private String contacts_phone;

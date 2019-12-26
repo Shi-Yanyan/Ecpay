@@ -6,7 +6,7 @@ import java.io.Serializable;
  * Created by user on 2016/11/22.
  */
 
-public class ApkBean implements Serializable {
+public class ApkBean implements Serializable{
     private String version;
     private String versioncode;
     private String msg;

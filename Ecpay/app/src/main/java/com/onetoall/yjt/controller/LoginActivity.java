@@ -3,6 +3,7 @@ package com.onetoall.yjt.controller;
 import android.content.Intent;
 import android.os.Bundle;
 import android.provider.Settings;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -15,6 +16,7 @@ import com.onetoall.yjt.config.EnvironmentConfigActivity;
 import com.onetoall.yjt.controller.profile.PersonPwdFindActivity;
 import com.onetoall.yjt.controller.store.ChoseStoreActivity;
 import com.onetoall.yjt.core.BaseActivity;
+import com.onetoall.yjt.domain.NewUser;
 import com.onetoall.yjt.domain.Profile;
 import com.onetoall.yjt.model.Callback;
 import com.onetoall.yjt.model.impl.UserModel;
@@ -32,6 +34,8 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
     private EditText mLoginPasswordEdt;
     private Button mLoginCommitBtn;
     private TextView mForgetPwdLabel;
+    private Button mRegistCommitBtn;
+    private EditText mLoginNicNameEdt;
 
     @Override
     protected void setContentView() {
@@ -41,10 +45,12 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
     @Override
     protected void initView() {
         translucentStatus();
+        mRegistCommitBtn = (Button) findViewById(R.id.mRegistCommitBtn);
         mLoginAccountEdt = (EditText) findViewById(R.id.mLoginAccountEdt);
         mLoginPasswordEdt = (EditText) findViewById(R.id.mLoginPasswordEdt);
         mLoginCommitBtn = (Button) findViewById(R.id.mLoginCommitBtn);
-        mForgetPwdLabel = (TextView) findViewById(R.id.mForgetPwdLabel);
+        mForgetPwdLabel =  (TextView) findViewById(R.id.mForgetPwdLabel);
+        mLoginNicNameEdt = (EditText) findViewById(R.id.mLoginNicNameEdt);
         mForgetPwdLabel.setOnClickListener(this);
         mLoginCommitBtn.setOnClickListener(this);
         findViewById(R.id.mEnvironmentSettingsBtn).setOnClickListener(new View.OnClickListener() {
@@ -53,9 +59,30 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
                 startActivity(new Intent(LoginActivity.this, EnvironmentConfigActivity.class));
             }
         });
-        if (!MyApplication.getInstance().isDev()) {
+        if(!MyApplication.getInstance().isDev()){
             findViewById(R.id.mEnvironmentSettingsBtn).setVisibility(View.GONE);
         }
+
+        mRegistCommitBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                String account1 = mLoginAccountEdt.getText().toString();
+                String password1 = mLoginPasswordEdt.getText().toString();
+                String nicName = mLoginNicNameEdt.getText().toString();
+                if(TextUtils.isEmpty(nicName)){
+                    showLongToast(mLoginNicNameEdt.getHint().toString());
+
+                    return ;
+                }
+                if (isValidate(account1, password1)) {
+                    doRegist(account1, password1,nicName);
+                } else {
+                    Toast.makeText(LoginActivity.this, R.string.mLoginInputEmptyMsg, Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        });
     }
 
 
@@ -83,37 +110,52 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
                 break;
             case R.id.mForgetPwdLabel:
                 UMEventUtil.onEvent(this, UMEvent.forget);
-                startActivity(new Intent(LoginActivity.this, PersonPwdFindActivity.class).putExtra(Constants.PWD_FIND_USERNAME, mLoginAccountEdt.getText().toString().trim()));
+                startActivity(new Intent(LoginActivity.this, PersonPwdFindActivity.class).putExtra(Constants.PWD_FIND_USERNAME,mLoginAccountEdt.getText().toString().trim()));
                 break;
+
             default:
                 break;
         }
     }
 
+    private  void  doRegist (String account , String  password ,String nicName){
+        showProgress("注册中>>>");
+        userModel.regisit(account, password,nicName, new Callback<NewUser>() {
+            @Override
+            public void onSuccess(NewUser data) {
+                closeProgress();
+                showLongToast("注册成功");
+//                Toast.makeText(LoginActivity.this,"注册成功",Toast.LENGTH_LONG).show();
+            }
+
+            @Override
+            public void onFailure(int code, String msg) {
+            closeProgress();
+            showLongToast("注册失败");
+//                Toast.makeText(LoginActivity.this,"注册失败",Toast.LENGTH_LONG).show();
+            }
+        });
+
+    }
+
     private void doLogin(final String account, final String password) {
         UMEventUtil.onEvent(this, UMEvent.login);
         showProgress(getString(R.string.mLoginLabel));
-        PrefsAccessor.getInstance(getApplicationContext()).saveString(Constants.PFA_TOKEN, null);//登陆前清空token
-        userModel.login(account, password, new Callback<Profile>() {
+        PrefsAccessor.getInstance(getApplicationContext()).saveString(Constants.PFA_TOKEN,null);//登陆前清空token
+        userModel.login(account, password, new Callback<NewUser>() {
             @Override
-            public void onSuccess(Profile data) {
+            public void onSuccess(NewUser data) {
                 closeProgress();
-                Trace.d(data.getUser_info().toString());
+
                 PrefsAccessor.getInstance(getApplicationContext()).saveString(Constants.PFA_ACCOUNT, account);
                 PrefsAccessor.getInstance(getApplicationContext()).saveString(Constants.PFA_PWD, password);
-                MyApplication.getInstance().setToken(data.getToken());
-                MyApplication.getInstance().setUser(data.getUser_info());
-                MyApplication.getInstance().setStoreNumber(data.getStore_arr().size());
-                setPushAlias();
-                if (data.getStore_arr().size() == 1) {
-                    MyApplication.getInstance().setStore(data.getStore_arr().get(0));
-                    goHome();
-                } else if (data.getStore_arr().size() > 1) {
-                    MyApplication.getInstance().setStore(data.getStore_arr().get(0));
-                    goChoseStore();
-                } else {
-                    Toast.makeText(getApplicationContext(), R.string.mLoginUserPermissionLowMsg, Toast.LENGTH_SHORT).show();
-                }
+                goHome();
+//            else if(data.getStore_arr().size() > 1){
+//                    MyApplication.getInstance().setStore(data.getStore_arr().get(0));
+//                   goChoseStore();
+//                }else {
+//                    Toast.makeText(getApplicationContext(), R.string.mLoginUserPermissionLowMsg, Toast.LENGTH_SHORT).show();
+//                }
 
             }
 
@@ -130,12 +172,10 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
         startActivity(intent);
         finish();
     }
-
     private void setPushAlias() {
         String androidID = Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID);
-        PushManager.getInstance().setPushAlias(this, androidID);
+        PushManager.getInstance().setPushAlias(this,androidID);
     }
-
     private void goChoseStore() {
         Intent intent = new Intent(this, ChoseStoreActivity.class);
         startActivity(intent);

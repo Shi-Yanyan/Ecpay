@@ -16,7 +16,7 @@ import com.qw.http.RequestManager;
  * Created by shaomengjie on 2016/11/20.
  */
 
-public class CollectionMoneyModel extends BaseModel implements ICollectionMoney {
+public class CollectionMoneyModel extends BaseModel implements ICollectionMoney{
     public CollectionMoneyModel(OnBaseModelListener listener) {
         super(listener);
     }
@@ -27,7 +27,7 @@ public class CollectionMoneyModel extends BaseModel implements ICollectionMoney 
         HttpRequest request = new HttpRequest(API.loadCollectionMoney(), HttpRequest.RequestMethod.POST);
         request.addHeader("X-Security-Token", MyApplication.getInstance().getToken());
         request.put("store_id", store_id);
-        request.put("rows", rows);
+        request.put("rows",rows);
         request.setCallback(new EcpayCallback<CollectionMoneyBean>() {
 
             @Override
@@ -41,6 +41,6 @@ public class CollectionMoneyModel extends BaseModel implements ICollectionMoney 
             }
         });
         request.setOnGlobalExceptionListener(this);
-        RequestManager.getInstance().execute("loadCollectionMoney", request);
+        RequestManager.getInstance().execute("loadCollectionMoney",request);
     }
 }

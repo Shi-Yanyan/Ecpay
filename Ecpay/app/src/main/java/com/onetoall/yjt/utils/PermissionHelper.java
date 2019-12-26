@@ -18,14 +18,13 @@ public class PermissionHelper {
     public static final int ASK_CAMERA = 102;
     public static final int ASK_CALL_PHONE = 103;
 
-    public static final class Permission {
-        public static final String STORAGE = Manifest.permission.WRITE_EXTERNAL_STORAGE;
-        public static final String CAMERA = Manifest.permission.CAMERA;
-        public static final String CALL_PHONE = Manifest.permission.CALL_PHONE;
-        public static final String READ_PHONE_STATE = Manifest.permission.READ_PHONE_STATE;
-        public static final String SEND_SMS = Manifest.permission.SEND_SMS;
+    public static final class Permission{
+        public static final String STORAGE= Manifest.permission.WRITE_EXTERNAL_STORAGE;
+        public static final String CAMERA= Manifest.permission.CAMERA;
+        public static final String CALL_PHONE= Manifest.permission.CALL_PHONE;
+        public static final String READ_PHONE_STATE= Manifest.permission.READ_PHONE_STATE;
+        public static final String SEND_SMS= Manifest.permission.SEND_SMS;
     }
-
     public static boolean requestPermission(Activity context, String permission, int requestCode) {
         return requestPermission(context, new String[]{permission}, requestCode);
     }

@@ -94,10 +94,10 @@ public class ProfileFragment extends BaseFragment implements ITabFragment, OnRow
         ArrayList<GroupDescriptor> groupDescriptors = new ArrayList<GroupDescriptor>();
         ArrayList<BaseRowDescriptor> rowDescriptors = new ArrayList<BaseRowDescriptor>();
         rowDescriptors.add(new IOSRowDescriptor(R.drawable.ic_phone, "联系客服", RowActionEnum.ACTION_PROFILE_CALL_PHONE));
-        if (MyApplication.getInstance().getStore().isShopkeeper()) {
-//        TODO 店长显示，店员隐藏
-            rowDescriptors.add(new IOSRowDescriptor(R.drawable.ic_people, "人员管理", RowActionEnum.ACTION_PROFILE_PERSON_MANAGER));
-        }
+//        if (MyApplication.getInstance().getStore().isShopkeeper()) {
+////        TODO 店长显示，店员隐藏
+//            rowDescriptors.add(new IOSRowDescriptor(R.drawable.ic_people, "人员管理", RowActionEnum.ACTION_PROFILE_PERSON_MANAGER));
+//        }
         GroupDescriptor groupDescriptor = new GroupDescriptor("", rowDescriptors);
         groupDescriptors.add(groupDescriptor);
         ContainerDescriptor containerDescriptor = new ContainerDescriptor(groupDescriptors);
@@ -111,7 +111,7 @@ public class ProfileFragment extends BaseFragment implements ITabFragment, OnRow
             mProfileLogoutBtn.setVisibility(View.GONE);
         }
         setUserInfo(MyApplication.getInstance().getUser());
-        loadDataFromServer();
+//        loadDataFromServer();
     }
 
     private void loadDataFromServer() {
@@ -132,10 +132,10 @@ public class ProfileFragment extends BaseFragment implements ITabFragment, OnRow
 
     public void setUserInfo(User user) {
         this.user = user;
-        mUserNameLabel.setText("姓名: " + user.getNickname());
+//        mUserNameLabel.setText("姓名: " + user.getNickname());
 //        TODO set store name
-        mStoreNameLabel.setText("门店: " + MyApplication.getInstance().getStore().getStore_name());
-        mUserJobNameLabel.setText(MyApplication.getInstance().getStore().getJobName());
+//        mStoreNameLabel.setText("门店: " + MyApplication.getInstance().getStore().getStore_name());
+//        mUserJobNameLabel.setText(MyApplication.getInstance().getStore().getJobName());
     }
 
     @Override
@@ -236,7 +236,8 @@ public class ProfileFragment extends BaseFragment implements ITabFragment, OnRow
 
     @Override
     public void onRefresh() {
-        loadDataFromServer();
+
+//        loadDataFromServer();
     }
 
     @Override

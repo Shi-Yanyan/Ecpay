@@ -103,7 +103,7 @@ public class PaySuccessActivity extends BaseActivity implements View.OnClickList
         if (data.getTotal_amount() > 0) {
             statusImg.setImageResource(R.drawable.ic_pay_success);
             statusTv.setText(R.string.mCollectMoneySuccessLabel);
-            textToSpeechUtils.notifyNewMessage("收款成功,金额" + data.getGood_amount() + "元");
+            textToSpeechUtils.notifyNewMessage("收款成功,金额"+data.getGood_amount()+"元");
         } else {
             statusImg.setImageResource(R.drawable.ic_pay_faile);
             statusTv.setText(R.string.mCollectMoneyFailLabel);
@@ -115,7 +115,7 @@ public class PaySuccessActivity extends BaseActivity implements View.OnClickList
         if ((keyCode == KeyEvent.KEYCODE_BACK)) {
             goHome();
             return false;
-        } else {
+        }else {
             return super.onKeyDown(keyCode, event);
         }
     }

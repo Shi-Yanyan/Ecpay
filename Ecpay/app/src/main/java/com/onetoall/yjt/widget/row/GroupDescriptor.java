@@ -3,13 +3,13 @@ package com.onetoall.yjt.widget.row;
 import java.util.ArrayList;
 
 public class GroupDescriptor {
-    public String title;
-    public ArrayList<BaseRowDescriptor> baseRowDescriptors;
+	public String title;
+	public ArrayList<BaseRowDescriptor> baseRowDescriptors;
 
-    public GroupDescriptor(String title,
-                           ArrayList<BaseRowDescriptor> baseRowDescriptors) {
-        this.title = title;
-        this.baseRowDescriptors = baseRowDescriptors;
-    }
+	public GroupDescriptor(String title,
+			ArrayList<BaseRowDescriptor> baseRowDescriptors) {
+		this.title = title;
+		this.baseRowDescriptors = baseRowDescriptors;
+	}
 
 }

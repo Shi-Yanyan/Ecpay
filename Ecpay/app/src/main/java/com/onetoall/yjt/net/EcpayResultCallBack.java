@@ -22,8 +22,8 @@ public abstract class EcpayResultCallBack<T> extends AbstractCallback<T> {
             Type type = getClass().getGenericSuperclass();
             type = ((ParameterizedType) type).getActualTypeArguments()[0];
             JSONObject jsonObject = new JSONObject(content);
-            int code = jsonObject.getInt("code");
-            if (code == 0) {
+            int code = jsonObject.getInt("status");
+            if (code == ResponseCode.CODE_SUCCESS) {
                 return JsonParser.deserializeFromJson(content, type);
             } else {
                 throw new AppException(code, jsonObject.getString("msg"));
@@ -32,7 +32,7 @@ public abstract class EcpayResultCallBack<T> extends AbstractCallback<T> {
             throw new AppException(AppException.ErrorType.JSON, e.getMessage());
         } catch (JSONException e) {
             throw new AppException(AppException.ErrorType.JSON, e.getMessage());
-        } catch (Exception e) {
+        } catch (Exception e){
             throw new AppException(AppException.ErrorType.JSON, e.getMessage());
         }
     }

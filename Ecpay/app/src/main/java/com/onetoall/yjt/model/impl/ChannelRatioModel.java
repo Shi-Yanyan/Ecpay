@@ -18,14 +18,14 @@ import com.qw.http.RequestManager;
  * Created by shaomengjie on 2016/11/18.
  */
 
-public class ChannelRatioModel extends BaseModel implements IChannelRatioModel {
+public class ChannelRatioModel extends BaseModel implements IChannelRatioModel{
     public ChannelRatioModel(OnBaseModelListener listener) {
         super(listener);
     }
 
     @Override
     public void loadChanneRatio(String store_id, final Callback<ChannelRatio> callback) {
-        HttpRequest request = new HttpRequest(API.getChannelRatio(), HttpRequest.RequestMethod.POST);
+        HttpRequest request = new HttpRequest(API.getChannelRatio(),HttpRequest.RequestMethod.POST);
         request.addHeader("X-Security-Token", MyApplication.getInstance().getToken());
         request.put("id", store_id);
         request.setCallback(new EcpayCallback<ChannelRatio>() {
@@ -41,6 +41,6 @@ public class ChannelRatioModel extends BaseModel implements IChannelRatioModel {
             }
         });
         request.setOnGlobalExceptionListener(this);
-        RequestManager.getInstance().execute("loadAccountBookIndex", request);
+        RequestManager.getInstance().execute("loadAccountBookIndex",request);
     }
 }

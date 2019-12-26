@@ -37,9 +37,11 @@
     <string name="title_store_info">门店信息</string>
     <!--login str-->
     <string name="mLoginLabel">登录</string>
+    <string name="mRedisitLabel">注册</string>
     <string name="mForgetPwdLabel">忘记密码 >></string>
-    <string name="mLoginAccountHint">请输入手机号</string>
+    <string name="mLoginAccountHint">请输入用户名</string>
     <string name="mLoginPasswordHint">请输入密码</string>
+    <string name="mLoginNicNameHint">请输入昵称</string>
     <string name="mLoginInputEmptyMsg">请输入用户名和密码</string>
     <string name="mLoginUserPermissionLowMsg">您没有绑定门店信息</string>
 

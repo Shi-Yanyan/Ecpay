@@ -30,12 +30,11 @@ import java.util.List;
  * Created by shaomengjie on 2016/11/20.
  */
 
-public class CustomerManagerActivity extends BaseListActivity<CollectionMoneyBean.ListBean> {
+public class CustomerManagerActivity extends BaseListActivity<CollectionMoneyBean.ListBean>{
     private CollectionMoneyModel collectionMoneyModel;
     private int page = 1;
     private Boolean isFirstLoad = true;
     private String time = "";
-
     @Override
     protected void initData(Bundle savedInstanceState) {
         setTitle("客户列表");
@@ -44,10 +43,10 @@ public class CustomerManagerActivity extends BaseListActivity<CollectionMoneyBea
     }
 
     private void loadDataFromServer(final int mode) {
-        collectionMoneyModel.loadCollectionMoney(MyApplication.getInstance().getStore().getStore_id() + "", page + "", new Callback<CollectionMoneyBean>() {
+        collectionMoneyModel.loadCollectionMoney(MyApplication.getInstance().getStore().getStore_id() + "", page+"", new Callback<CollectionMoneyBean>() {
             @Override
             public void onSuccess(CollectionMoneyBean data) {
-                if (data != null) {
+                if (data!=null){
                     if (mode == PullRecyclerView.MODE_PULL_TO_START) modules.clear();
                     initBeab(data);
                     if (data.getList().size() < 10) {
@@ -88,7 +87,6 @@ public class CustomerManagerActivity extends BaseListActivity<CollectionMoneyBea
 
     /**
      * 对数据进行处理，屏蔽当日时间重复显示
-     *
      * @param data
      */
     private void initBeab(CollectionMoneyBean data) {
@@ -105,7 +103,7 @@ public class CustomerManagerActivity extends BaseListActivity<CollectionMoneyBea
 
     @Override
     protected void setContentView() {
-        setContentView(R.layout.activity_collect_moey, true);
+        setContentView(R.layout.activity_collect_moey,true);
     }
 
     @Override
@@ -120,7 +118,7 @@ public class CustomerManagerActivity extends BaseListActivity<CollectionMoneyBea
         return new Holder(LayoutInflater.from(getBaseContext()).inflate(R.layout.activity_collect_money_item, parent, false));
     }
 
-    class Holder extends BaseViewHolder {
+    class Holder extends BaseViewHolder{
 
         private TextView timeTv;
         private ImageView payImg;

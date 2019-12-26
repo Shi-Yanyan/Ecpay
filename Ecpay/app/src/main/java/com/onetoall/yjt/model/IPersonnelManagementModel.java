@@ -8,5 +8,5 @@ import com.onetoall.yjt.domain.PersonnelManagementBean;
  */
 
 public interface IPersonnelManagementModel {
-    void loadPersonnelManagement(String tel, String store_number, Callback<PersonnelManagementBean> callback);
+    void loadPersonnelManagement(String tel,String store_number,Callback<PersonnelManagementBean> callback);
 }

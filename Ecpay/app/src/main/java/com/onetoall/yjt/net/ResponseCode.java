@@ -7,7 +7,7 @@ package com.onetoall.yjt.net;
  */
 
 public class ResponseCode {
-    public static final int CODE_SUCCESS = 0;//添加成功
+    public static final int CODE_SUCCESS = 1;//添加成功
     public static final int CODE_NO_LOGIN = 100;//未登录
     public static final int CODE_NO_DATA = 1001;//没有数据
     public static final int CODE_ERROR_REQUEST = 1002;//错误请求

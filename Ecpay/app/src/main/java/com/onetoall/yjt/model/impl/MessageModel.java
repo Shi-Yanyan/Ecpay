@@ -21,7 +21,7 @@ import java.util.ArrayList;
  * Created by shaomengjie on 2016/12/6.
  */
 
-public class MessageModel extends BaseModel implements IMessageModel {
+public class MessageModel extends BaseModel implements IMessageModel{
     public MessageModel(OnBaseModelListener listener) {
         super(listener);
     }
@@ -31,7 +31,7 @@ public class MessageModel extends BaseModel implements IMessageModel {
         HttpRequest request = new HttpRequest(API.getMessageList(), HttpRequest.RequestMethod.POST);
         request.addHeader("X-Security-Token", MyApplication.getInstance().getToken());
         request.put("id", id);
-        request.put("username", username);
+        request.put("username",username);
         request.setCallback(new EcpayListCallback<ArrayList<MessageBean>>() {
 
             @Override
@@ -45,7 +45,7 @@ public class MessageModel extends BaseModel implements IMessageModel {
             }
         });
         request.setOnGlobalExceptionListener(this);
-        RequestManager.getInstance().execute("loadMessageModel", request);
+        RequestManager.getInstance().execute("loadMessageModel",request);
     }
 
     @Override
@@ -66,6 +66,6 @@ public class MessageModel extends BaseModel implements IMessageModel {
         });
         request.setOnGlobalExceptionListener(this);
 
-        RequestManager.getInstance().execute("commitUpdata", request);
+        RequestManager.getInstance().execute("commitUpdata",request);
     }
 }

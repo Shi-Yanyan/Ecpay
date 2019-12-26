@@ -7,7 +7,7 @@ import java.io.Serializable;
  * email:qinwei_it@163.com
  */
 
-public class PayOrderDetail implements Serializable {
+public class PayOrderDetail implements Serializable{
     private double count_fee;
     private long store_id;
     private String cashier_id;

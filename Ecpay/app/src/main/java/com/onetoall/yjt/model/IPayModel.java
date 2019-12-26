@@ -30,6 +30,5 @@ public interface IPayModel {
     void collectMoneyByScanner(PayRequestParameter parameter, Callback<PayOrderDetail> callback);
 
     void collectMoneyByAlipayQrCode(PayRequestParameter parameter, Callback<PayQRCode> callback);
-
     void collectMoneyByWeixinQrCode(PayRequestParameter parameter, Callback<PayQRCode> callback);
 }

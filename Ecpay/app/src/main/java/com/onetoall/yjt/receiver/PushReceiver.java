@@ -56,8 +56,8 @@ public class PushReceiver extends BroadcastReceiver {
             Intent i = new Intent(context, MainActivity.class);
             i.putExtras(bundle);
             i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            i.putExtra(Constants.KEY_ACTION, Constants.ACTION_BACK_TO_HOME);
-            i.putExtra(Constants.SWITCH_FRAGMENT_INDEX, 1);
+            i.putExtra(Constants.KEY_ACTION,Constants.ACTION_BACK_TO_HOME);
+            i.putExtra(Constants.SWITCH_FRAGMENT_INDEX,1);
             context.startActivity(i);
 
         } else if (JPushInterface.ACTION_RICHPUSH_CALLBACK.equals(intent.getAction())) {

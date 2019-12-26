@@ -47,12 +47,11 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:orientation="vertical">
-
                         <TextView
                             android:id="@+id/mStoreShopNameLabel"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="商户：" />
+                            android:text="商户："/>
 
                         <TextView
                             android:id="@+id/mStoreNameLabel"
@@ -60,13 +59,13 @@
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="@dimen/common_activity_padding_8"
                             android:layout_marginTop="@dimen/common_activity_padding_8"
-                            android:text="门店：" />
+                            android:text="门店："/>
 
                         <TextView
                             android:id="@+id/mStoreShopOwnerLabel"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="店长：" />
+                            android:text="店长："/>
                     </LinearLayout>
 
                     <ImageView

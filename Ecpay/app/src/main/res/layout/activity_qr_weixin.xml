@@ -53,7 +53,8 @@
                 android:layout_height="wrap_content"
                 android:text="￥55"
                 style="@style/mTitleStyle"
-                android:layout_marginTop="@dimen/common_activity_padding_8" />
+                android:layout_marginTop="@dimen/common_activity_padding_8"
+                />
 
             <TextView
                 android:id="@+id/mQrAlipayGuideLabel"

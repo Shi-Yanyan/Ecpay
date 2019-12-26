@@ -38,7 +38,7 @@ public class MyApplication extends Application {
     private static User user;
     private static MyApplication mInstance;
     private boolean isDev = false;
-    //    private boolean isDev = BuildConfig.DEBUG;
+//    private boolean isDev = BuildConfig.DEBUG;
     private String token;
     private String tel;
     private Store store;
@@ -75,7 +75,7 @@ public class MyApplication extends Application {
         }
         OkHttpClient client = new OkHttpClient.Builder().addInterceptor(logging)
 //                .cache(cache)
-                .connectTimeout(60, TimeUnit.SECONDS).readTimeout(60, TimeUnit.SECONDS)
+                .connectTimeout(60, TimeUnit.SECONDS).readTimeout(60,TimeUnit.SECONDS)
                 .addInterceptor(new Interceptor() {
 
                     @Override
@@ -122,14 +122,14 @@ public class MyApplication extends Application {
     }
 
     public String getToken() {
-        if (token == null) {
+        if (token==null){
             token = PrefsAccessor.getInstance(getApplicationContext()).getString(Constants.PFA_TOKEN);
         }
         return token;
     }
 
     public void setToken(String token) {
-        PrefsAccessor.getInstance(getApplicationContext()).saveString(Constants.PFA_TOKEN, token);
+        PrefsAccessor.getInstance(getApplicationContext()).saveString(Constants.PFA_TOKEN,token);
         this.token = token;
     }
 
@@ -139,7 +139,7 @@ public class MyApplication extends Application {
     }
 
     public User getUser() {
-        if (user == null) {
+        if (user==null){
             return new User();
         }
         return user;
@@ -154,7 +154,7 @@ public class MyApplication extends Application {
     }
 
     public Store getStore() {
-        if (store == null) {
+        if (store==null){
             store = new Store();
         }
         return store;

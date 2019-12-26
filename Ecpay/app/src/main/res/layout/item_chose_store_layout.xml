@@ -11,7 +11,8 @@
         android:id="@+id/ali_pay_btn"
         android:layout_width="match_parent"
         android:layout_height="64dp"
-        android:background="@android:color/white">
+        android:background="@android:color/white"
+        >
 
         <ImageView
             android:id="@+id/pay_img"

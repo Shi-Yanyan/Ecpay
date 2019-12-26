@@ -1,6 +1,7 @@
 package com.onetoall.yjt.model;
 
 import com.onetoall.yjt.domain.AllInfoNewBean;
+import com.onetoall.yjt.domain.NewUser;
 import com.onetoall.yjt.domain.PersonalInfomationBean;
 import com.onetoall.yjt.domain.Profile;
 import com.onetoall.yjt.domain.Result;
@@ -19,7 +20,10 @@ public interface IUserModel {
      * @param password
      * @param callback
      */
-    void login(String username, String password, Callback<Profile> callback);
+    void login(String username, String password, Callback<NewUser> callback);
+
+    void regisit(String username, String password,String nicName, Callback<NewUser>  callback);
+
 
     /**
      * 加载用户信息
@@ -28,34 +32,28 @@ public interface IUserModel {
      * @param callback
      */
     void loadUserInfo(String tel, Callback<User> callback);
-
     /**
      * 修改密码
      */
-    void changePwd(String oldPwd, String newPwd, Callback<Result> callback);
-
+    void changePwd(String oldPwd,String newPwd,Callback<Result> callback);
     /**
      * 查询个人信息
      */
-    void selectStoreInfo(String storeID, Callback<PersonalInfomationBean> callback);
-
+    void selectStoreInfo(String storeID,Callback<PersonalInfomationBean> callback);
     /**
      * 修改个人信息
      */
-    void changePersonInfo(String tel, String name, String nickName, String sex, Callback<Result> callback);
-
+    void changePersonInfo(String tel,String name,String nickName,String sex,Callback<Result> callback);
     /**
      * 找回密码
      */
-    void findPwd(String tel, String code, String pwd, Callback<Result> callback);
-
+    void findPwd(String tel,String code,String pwd,Callback<Result> callback);
     /**
      * 发送短信
      */
-    void sendVerfiMsg(String tel, Callback<Result> callback);
-
+    void sendVerfiMsg(String tel,Callback<Result> callback);
     /**
      * 实时查询登录用户所有信息
      */
-    void querryAllInfoNew(String tel, Callback<AllInfoNewBean> callback);
+    void querryAllInfoNew(String tel,Callback<AllInfoNewBean> callback);
 }

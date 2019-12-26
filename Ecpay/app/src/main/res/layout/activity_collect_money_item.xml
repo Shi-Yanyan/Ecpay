@@ -3,7 +3,6 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
-
     <TextView
         android:id="@+id/time_tv"
         android:layout_width="wrap_content"
@@ -14,17 +13,19 @@
         android:text="2008-12-12"
         style="@style/mContentHintStyle" />
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="0.1dp"
-        android:background="@color/bian_3" />
+   <View
+       android:layout_width="match_parent"
+       android:layout_height="0.1dp"
+       android:background="@color/bian_3"
+       />
 
     <RelativeLayout
         android:id="@+id/ali_pay_btn"
         android:layout_width="match_parent"
         android:layout_height="64dp"
         android:clickable="true"
-        android:background="@color/white">
+        android:background="@color/white"
+        >
 
         <ImageView
             android:id="@+id/pay_img"
@@ -88,5 +89,6 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="0.1dp"
-        android:background="@color/bian_3" />
+        android:background="@color/bian_3"
+        />
 </LinearLayout>

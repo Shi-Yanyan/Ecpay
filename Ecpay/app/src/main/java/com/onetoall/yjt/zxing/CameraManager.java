@@ -250,7 +250,7 @@ public final class CameraManager {
                 height = MAX_FRAME_HEIGHT;
             }
             int leftOffset = (screenResolution.x - width) / 2;
-            int topOffset = (screenResolution.y - height) / 2 + DensityUtil.dip2px(context, 20);
+            int topOffset = (screenResolution.y - height) / 2+DensityUtil.dip2px(context,20);
             framingRect = new Rect(leftOffset, topOffset, leftOffset + width, topOffset + height);
             Log.d(TAG, "Calculated framing rect: " + framingRect);
         }
@@ -294,12 +294,12 @@ public final class CameraManager {
      */
     /*
      * public Point[] convertResultPoints(ResultPoint[] points) { Rect frame =
-     * getFramingRectInPreview(); int count = points.length; Point[] output =
-     * new Point[count]; for (int x = 0; x < count; x++) { output[x] = new
-     * Point(); output[x].x = frame.left + (int) (points[x].getX() + 0.5f);
-     * output[x].y = frame.top + (int) (points[x].getY() + 0.5f); } return
-     * output; }
-     */
+	 * getFramingRectInPreview(); int count = points.length; Point[] output =
+	 * new Point[count]; for (int x = 0; x < count; x++) { output[x] = new
+	 * Point(); output[x].x = frame.left + (int) (points[x].getX() + 0.5f);
+	 * output[x].y = frame.top + (int) (points[x].getY() + 0.5f); } return
+	 * output; }
+	 */
 
     /**
      * A factory method to build the appropriate LuminanceSource object based on
