@@ -3,7 +3,7 @@
     <!--主菜单-->
     <string name="app_home_collect_money_label">收款</string>
     <string name="app_home_account_book_label">账本</string>
-    <string name="app_home_shop_label">商铺</string>
+    <string name="app_home_shop_label">商店</string>
     <string name="app_home_profile_label">设置</string>
     <!--欢迎-->
     <string name="welcome_message">欢迎%1$s</string>
